@@ -46,11 +46,11 @@ class Trail:
         curr_time = time.time_ns()
         if self.prev_label is not None:
             self.blazes[self.prev_label].update(curr_time - self.prev_time)
-            self.__show()
+            self._show()
         self.prev_label = name
-        self.prev_time = time.time_ns()  # avoid counting overhead time.
+        self.prev_time = time.time_ns()  # get new time, avoid timing _show()
 
-    def __show(self):
+    def _show(self):
         if self.lines_printed_prev_time:
             print(_t.move_up(self.lines_printed_prev_time + 1))
         lines_printed = 0
